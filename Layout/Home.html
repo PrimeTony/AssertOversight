@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="home-container">
+        <h1>Welcome to AssertOverSight</h1>
+        <div class="button-container">
+            <button onclick="location.href='Maintenance-Log.html'">Maintenance Log</button>
+            <button onclick="location.href='LocateVehicle.html'">Locate Vehicle</button>
+            <button onclick="location.href='Profile.html'">Profile</button>
+            <button onclick="handleLogout()">Log Out</button>
+        </div>
+    </div>
+    <script>
+        function handleLogout() {
+            // Implement logout functionality here
+            alert("Logged out!");
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
