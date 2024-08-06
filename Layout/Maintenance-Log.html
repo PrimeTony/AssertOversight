@@ -5,25 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance Log</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+        import { getDatabase, ref, set, get, child, push } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtbj5GKMrppKUnGIAcZuNkBUWsw821J3w",
+            authDomain: "assertoversight.firebaseapp.com",
+            databaseURL: "https://assertoversight-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "assertoversight",
+            storageBucket: "assertoversight.appspot.com",
+            messagingSenderId: "1027182858194",
+            appId: "1:1027182858194:web:ded2b1e280095fe1e6820b",
+            measurementId: "G-J60E5TPXEE"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // Function to handle log entries
+        function handleLogEntry(event) {
+            event.preventDefault();
+
+            const dateOfService = document.getElementById('dateOfService').value;
+            const serviceDetails = document.getElementById('serviceDetails').value;
+            const cost = document.getElementById('cost').value;
+            const description = document.getElementById('description').value;
+
+            const logEntry = {
+                dateOfService,
+                serviceDetails,
+                cost,
+                description
+            };
+
+            const user = auth.currentUser;
+            const userId = user.uid;
+            const logRef = push(ref(db, 'logs/' + userId));
+            set(logRef, logEntry)
+                .then(() => {
+                    alert('Log entry saved successfully.');
+                    document.getElementById('logForm').reset();
+                })
+                .catch((error) => {
+                    alert('Error saving log entry: ' + error.message);
+                });
+        }
+
+        // Function to display log entries
+        function displayLogEntries() {
+            const user = auth.currentUser;
+            const userId = user.uid;
+            const logsRef = ref(db, 'logs/' + userId);
+
+            get(logsRef).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const logs = snapshot.val();
+                    const logList = document.getElementById('logList');
+                    logList.innerHTML = '';
+
+                    Object.keys(logs).forEach((key) => {
+                        const log = logs[key];
+                        const logItem = document.createElement('li');
+                        logItem.textContent = `Date: ${log.dateOfService}, Service: ${log.serviceDetails}, Cost: ${log.cost}, Description: ${log.description || 'N/A'}`;
+                        logList.appendChild(logItem);
+                    });
+                } else {
+                    alert('No log entries found.');
+                }
+            }).catch((error) => {
+                alert('Error retrieving log entries: ' + error.message);
+            });
+        }
+
+        // Attach event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const logForm = document.getElementById('logForm');
+            if (logForm) {
+                logForm.addEventListener('submit', handleLogEntry);
+            }
+
+            const viewLogsButton = document.getElementById('viewLogsButton');
+            if (viewLogsButton) {
+                viewLogsButton.addEventListener('click', displayLogEntries);
+            }
+        });
+    </script>
 </head>
 <body>
-    <div class="home-container">
-        <h1>Maintenance Log</h1>
-        <form id="maintenanceForm">
+    <div class="log-container">
+        <h2>Maintenance Log</h2>
+        <form id="logForm">
             <div class="input-group">
-                <label for="serviceDate">Service Date</label>
-                <input type="date" id="serviceDate" name="serviceDate" required>
+                <label for="dateOfService">Date of Previous Service</label>
+                <input type="date" id="dateOfService" name="dateOfService" required>
             </div>
             <div class="input-group">
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" required>
+                <label for="serviceDetails">What Was Serviced</label>
+                <input type="text" id="serviceDetails" name="serviceDetails" required>
             </div>
             <div class="input-group">
-                <label for="cost">Cost</label>
+                <label for="cost">Cost (R)</label>
                 <input type="number" id="cost" name="cost" required>
             </div>
-            <button type="submit">Add Record</button>
+            <div class="input-group">
+                <label for="description">Description of Service (optional)</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <button type="submit">Add Log Entry</button>
         </form>
+        <button id="viewLogsButton">View Log Entries</button>
+        <ul id="logList"></ul>
     </div>
 </body>
 </html>
