@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#404040"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Manage">
+
+    <!-- Toolbar (Navigation Bar) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#A1A1A1"
+        android:elevation="4dp"
+        android:title="Manage Cars"
+        android:titleTextColor="#FFFFFF">
+        <!-- Back button is automatically added by the toolbar once set in the activity -->
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- RecyclerView for displaying cars -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+</LinearLayout>

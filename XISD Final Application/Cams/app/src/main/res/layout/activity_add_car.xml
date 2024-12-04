@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#121212"
+    tools:context=".AddCar">
+
+    <!-- Input Fields for Username and Password -->
+<EditText
+android:id="@+id/usernameInput"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter username"
+android:inputType="text"
+android:textColor="#FFFFFF"
+android:textColorHint="#888888"
+android:backgroundTint="#444444"
+android:padding="12dp"
+android:layout_marginBottom="8dp" />
+
+<EditText
+android:id="@+id/passwordInput"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter password"
+android:inputType="textPassword"
+android:textColor="#FFFFFF"
+android:textColorHint="#888888"
+android:backgroundTint="#444444"
+android:padding="12dp"
+android:layout_marginBottom="16dp" />
+
+    <!-- Button to Trigger the First API Request -->
+<Button
+android:id="@+id/fetchTokenButton"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp"
+android:backgroundTint="#3A5726"
+android:textColor="#FFFFFF"
+android:text="Fetch Access Token" />
+
+    <!-- Display the First URI's JSON Response -->
+<TextView
+android:id="@+id/firstUriTextView"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="8dp"
+android:textColor="#FFFFFF"
+android:textSize="18sp"
+android:layout_marginTop="12dp"
+android:visibility="visible" />
+
+    <!-- Input Field for IMEI (after first step) -->
+<EditText
+android:id="@+id/imeiInput"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter IMEI"
+android:inputType="number"
+android:textColor="#FFFFFF"
+android:textColorHint="#888888"
+android:backgroundTint="#444444"
+android:padding="12dp"
+android:layout_marginTop="16dp"
+android:visibility="visible" />
+
+    <!-- Button to Trigger the Second API Request (After inputting IMEI) -->
+<Button
+android:id="@+id/fetchLocationButton"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp"
+android:backgroundTint="#3A5726"
+android:textColor="#FFFFFF"
+android:text="Fetch Location Data"
+android:visibility="visible" />
+
+    <!-- Display the Second URI's JSON Response (Location Data) -->
+<TextView
+android:id="@+id/secondUriTextView"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:padding="8dp"
+android:textColor="#FFFFFF"
+android:textSize="18sp"
+android:layout_marginTop="12dp"
+android:visibility="visible" />
+
+    <!-- Input Field for Car Model -->
+<EditText
+android:id="@+id/ModelInput"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter Car Name"
+android:inputType="text"
+android:textColor="#FFFFFF"
+android:textColorHint="#888888"
+android:backgroundTint="#444444"
+android:padding="12dp"
+android:layout_marginTop="16dp"
+android:visibility="visible" />
+
+    <!-- Input Field for Number Plate -->
+<EditText
+android:id="@+id/NumberplateInput"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:hint="Enter Number Plate"
+android:inputType="text"
+android:textColor="#FFFFFF"
+android:textColorHint="#888888"
+android:backgroundTint="#444444"
+android:padding="12dp"
+android:layout_marginTop="12dp"
+android:visibility="visible" />
+
+    <!-- Button to Insert Vehicle -->
+<Button
+android:id="@+id/InsertVheicle"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="16dp"
+android:backgroundTint="#3A5726"
+android:textColor="#FFFFFF"
+android:text="Insert Vehicle"
+android:visibility="visible" />
+
+    </LinearLayout>

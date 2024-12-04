@@ -1,0 +1,27 @@
+<!-- res/layout/activity_faq.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#404040">
+
+    <!-- Toolbar for navigation -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#9A9A9A"
+        android:elevation="4dp"
+        android:title="Frequently Asked Questions"
+        android:titleTextColor="#FFFFFF"></androidx.appcompat.widget.Toolbar>
+
+    <!-- RecyclerView for displaying FAQs -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/faqRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+</LinearLayout>

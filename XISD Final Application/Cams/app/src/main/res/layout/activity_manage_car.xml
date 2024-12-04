@@ -1,0 +1,40 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/retrievedDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retrieved Data will appear here" />
+
+    <TextView
+        android:id="@+id/accessTokenTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Access Token will appear here" />
+
+    <TextView
+        android:id="@+id/timestampTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Timestamp will appear here" />
+
+    <TextView
+        android:id="@+id/authUriTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Auth URI will appear here"
+        android:textColor="@android:color/holo_blue_light"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/jsonResponseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JSON Response will appear here" />
+</LinearLayout>

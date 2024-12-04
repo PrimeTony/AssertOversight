@@ -1,0 +1,46 @@
+<!-- res/layout/faq_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="#DDDCDC"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- FAQ Question -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DDD9D9"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- Question Text -->
+        <TextView
+            android:id="@+id/questionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="What is GPS tracking and how does it work?"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <!-- Expand/Collapse Icon -->
+        <ImageView
+            android:id="@+id/expandIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_down" />
+    </LinearLayout>
+
+    <!-- FAQ Answer -->
+    <TextView
+        android:id="@+id/answerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="GPS tracking uses satellite networks to determine precise vehicle locations..."
+        android:textColor="#191919"
+        android:textSize="14sp"
+        android:visibility="gone" />
+</LinearLayout>
